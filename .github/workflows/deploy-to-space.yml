@@ -1,19 +1,25 @@
-name: Deploy to Hugging Face Space
+name: Sync to Hugging Face Space
 
 on:
   push:
     branches:
-      - main   # 每次 push 到 main 就會自動更新 Space
+      - main
 
 jobs:
   deploy:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout code
+      - name: Checkout repository
         uses: actions/checkout@v3
 
-      - name: Sync with Hugging Face Space
-        uses: huggingface/huggingface-action@v1
-        with:
-          repo: ELECAR00/complex-chat-demo
-          token: ${{ secrets.HF_TOKEN }}
+      - name: Set up Git
+        run: |
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+          git config --global user.name "github-actions[bot]"
+
+      - name: Push to Hugging Face
+        env:
+          HF_TOKEN: ${{ secrets.HF_TOKEN }}
+        run: |
+          git remote add space https://huggingface.co/ELECAR00/complex-chat-demo
+          git push --force space main
