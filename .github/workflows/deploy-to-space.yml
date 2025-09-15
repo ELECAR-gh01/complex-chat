@@ -1,0 +1,19 @@
+name: Deploy to Hugging Face Space
+
+on:
+  push:
+    branches:
+      - main   # 每次 push 到 main 就會自動更新 Space
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Sync with Hugging Face Space
+        uses: huggingface/huggingface-action@v1
+        with:
+          repo: your-username/your-space-name   # 換成你的 Space 名字
+          token: ${{ secrets.HF_TOKEN }}
