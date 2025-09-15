@@ -11,6 +11,8 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v3
+        with:
+          fetch-depth: 0   # 拿完整 git 歷史，避免 shallow update 錯誤
 
       - name: Set up Git
         run: |
