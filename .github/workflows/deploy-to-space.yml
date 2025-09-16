@@ -19,6 +19,15 @@ jobs:
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
           git config --global user.name "github-actions[bot]"
 
+      - name: Prepare repo (rename README.md)   # ⭐ 新增這段
+        run: |
+          if [ -f README.md ]; then
+            mv README.md GH_README.md           # 改名 README.md → GH_README.md
+            git add GH_README.md
+            git rm -f README.md || true
+            git commit -m "Rename README.md to GH_README.md for HF sync" || echo "no changes"
+          fi
+          
       - name: Push to Hugging Face
         env:
           HF_TOKEN: ${{ secrets.HF_TOKEN }}
