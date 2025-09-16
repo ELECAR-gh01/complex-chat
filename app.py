@@ -66,6 +66,7 @@ def get_client(provider):
         )
 
 # ---------- 3. 呼叫一次模型做段落字句改寫 ----------
+"""
 async def rewrite_once(model_key, text, system_prompt, temp):
     provider, full_id = MODELS[model_key]
     client  = get_client(provider)
@@ -103,6 +104,21 @@ async def rewrite_once(model_key, text, system_prompt, temp):
 
     else:
         raise ValueError(f"Unknown provider: {provider}")
+"""
+async def rewrite_once(model_key, text, system_prompt, temp):
+    _, full_id = MODELS[model_key]
+    client = get_client()
+    resp = await client.chat.completions.create(
+        model=full_id,
+        messages=[
+            {"role": "system", "content": system_prompt or "You are a researcher."},
+            {"role": "user", "content": text}
+        ],
+        temperature=temp,
+    )
+    return resp.choices[0].message.content.strip()
+
+
 
 # ---------- 4. 三模型並行改寫 ----------
 def rewrite_batch(text, model1, model2, model3, sys_prompt, temp):
