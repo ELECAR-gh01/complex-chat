@@ -175,7 +175,7 @@ def rewrite_batch(text, model1, model2, model3, sys_prompt, temp):
 # ---------- 5. Gradio 介面 ----------
 model_list = list(MODELS.keys())    # 給 Dropdown 用
 
-with gr.Blocks(title="Chat-API") as demo:
+with gr.Blocks(theme=gr.themes.Soft(), title="Chat-API") as demo:
     gr.Markdown("### 📝 一次比較三種模型的輸出結果")
 
     src = gr.Textbox(label="輸入", lines=8, placeholder="貼上或輸入要改寫的內容")
