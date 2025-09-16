@@ -58,12 +58,12 @@ def get_client(provider):
             headers={"Authorization": f"Bearer {PP_KEY}"}
         )
 """
-def get_client(provider):
-    if provider == "stima":
-        return openai.AsyncOpenAI(
-            api_key=STIMA_KEY,
-            base_url="https://api.stima.tech/v1"
-        )
+def get_client():
+    return openai.AsyncOpenAI(
+        api_key=STIMA_KEY,
+        base_url="https://api.stima.tech/v1"
+    )
+
 
 # ---------- 3. 呼叫一次模型做段落字句改寫 ----------
 """
