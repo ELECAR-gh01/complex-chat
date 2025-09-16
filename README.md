@@ -26,6 +26,7 @@ A chatbot that can input a question and get answers from three models
 
 整體介面基於 [Gradio](https://gradio.app) 開發，設計簡單直觀，即使沒有程式背景的人也能輕鬆使用。  
 
+
 ### 二、自由串接不同廠商 API
 
 此專案並不綁定特定 API，可以自由選擇不同的模型供應商：  
@@ -37,12 +38,14 @@ A chatbot that can input a question and get answers from three models
 
 （目前正配合 **Stima 推廣計畫**，所以這個版本以 Stima API 為主要串接對象，順便測試看看它的使用體驗 XD）  
 
+
 ### 三、適用情境
 
 - 開發者：快速比較不同 LLM 的表現
 - 研究人員：於論文改寫、字句編譯時，可以一次比較多種模型輸出結果
 - 教育用途：讓學生理解不同模型的思路差異
 - 產品開發：在早期選擇模型時，能快速測試多種模型
+
 
 ## 🔮 未來計畫 / TODO
 
