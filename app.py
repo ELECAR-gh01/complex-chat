@@ -38,6 +38,7 @@ MODELS = {
 """
 
 # ---------- 2. 建立對應 Provider 的 Async 客戶端 ----------
+"""
 def get_client(provider):
     if provider == "openai":
         return openai.AsyncOpenAI(api_key=OA_KEY)    # 使用官方端點, 不用改 base_url
@@ -55,6 +56,13 @@ def get_client(provider):
         return httpx.AsyncClient(
             base_url="https://api.perplexity.ai",
             headers={"Authorization": f"Bearer {PP_KEY}"}
+        )
+"""
+def get_client(provider):
+    if provider == "stima":
+        return openai.AsyncOpenAI(
+            api_key=STIMA_KEY,
+            base_url="https://api.stima.tech/v1"
         )
 
 # ---------- 3. 呼叫一次模型做段落字句改寫 ----------
