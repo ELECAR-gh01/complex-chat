@@ -5,6 +5,7 @@ import openai
 from dotenv import load_dotenv
 import httpx
 from models_list import MODELS
+from openai import AsyncOpenAI
 
 
 # ---------- 0. 讀環境變數 ----------
