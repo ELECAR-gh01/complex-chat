@@ -27,7 +27,15 @@ jobs:
             git rm -f README.md || true
             git commit -m "Rename README.md to GH_README.md for HF sync" || echo "no changes"
           fi
-          
+
+      - name: Replace README with HF version
+        run: |
+          if [ -f HF_README.md ]; then
+            cp HF_README.md README.md
+            git add README.md
+            git commit -m "Use HF_README.md as README.md for HF sync" || echo "no changes"
+          fi
+
       - name: Push to Hugging Face
         env:
           HF_TOKEN: ${{ secrets.HF_TOKEN }}
