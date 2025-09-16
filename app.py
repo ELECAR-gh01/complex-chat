@@ -119,9 +119,9 @@ with gr.Blocks(theme=gr.themes.Soft(), title="Chat-API") as demo:
                      step=0.05, label="Temperature")    # 新增溫度滑桿：0.0 ~ 1.0，預設 0.7
     
     with gr.Row():
-        dd1 = gr.Dropdown(model_list, value=model_list[0],  label="模型 1")    # 預設 DeepSeek-R1
-        dd2 = gr.Dropdown(model_list, value=model_list[1],  label="模型 2")    # 預設 Gemini 2.0 Flash
-        dd3 = gr.Dropdown(model_list, value=model_list[12], label="模型 3")    # 預設 GPT-4o-mini
+        dd1 = gr.Dropdown(model_list, value=model_list[4],  label="模型 1")    # 預設 GPT-5 Nano
+        dd2 = gr.Dropdown(model_list, value=model_list[41],  label="模型 2")    # 預設 Gemini 2.5 Flash
+        dd3 = gr.Dropdown(model_list, value=model_list[151], label="模型 3")    # 預設 Grok 3 Mini Beta
 
     btn = gr.Button("🌟查詢")
 
